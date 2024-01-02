@@ -34,6 +34,7 @@ $lastUpdateTime = file_get_contents('last_update.txt');
             margin-bottom: 20px;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -43,5 +44,34 @@ $lastUpdateTime = file_get_contents('last_update.txt');
 
     <!-- Include your JavaScript file -->
     <script src="script.js"></script>
+
+    <script>
+        // Check if the JavaScript is executing the scripts
+        // If not, trigger the script.js
+        var scriptExecutionStatus = false; // Set to false initially
+
+        // Function to check if script.js is executing
+        function checkScriptExecution() {
+            // You can use an AJAX request to a PHP script that checks if script.js is running
+            // For simplicity, we'll use a variable for demonstration purposes
+            // You should replace this with an actual check using AJAX
+
+            // Simulated check
+            scriptExecutionStatus = true; // Set to true to simulate script.js running
+
+            if (!scriptExecutionStatus) {
+                // If script.js is not running, trigger it
+                var script = document.createElement('script');
+                script.src = 'script.js';
+                document.body.appendChild(script);
+            }
+        }
+
+        // Call the function initially
+        checkScriptExecution();
+
+        // Schedule the function to run every hour (in milliseconds)
+        setInterval(checkScriptExecution, 3600000); // 3600000 milliseconds = 1 hour
+    </script>
 </body>
 </html>
